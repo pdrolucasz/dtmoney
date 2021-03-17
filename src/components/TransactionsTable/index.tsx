@@ -1,4 +1,4 @@
-import { Container } from "./styles"
+import { Container, ResponsiveTable } from "./styles"
 
 import { useTransactions } from "../../hooks/useTransactions"
 
@@ -37,6 +37,26 @@ export function TransactionsTable() {
                     ))}
                 </tbody>
             </table>
+
+            {transactions.map(transaction => (
+                <ResponsiveTable key={transaction.id}>
+                    <p>{transaction.title}</p>
+                    <p className={transaction.type}>
+                        {new Intl.NumberFormat('pt-br', {
+                            style: 'currency',
+                            currency: 'BRL'
+                        }).format(transaction.amount)}
+                    </p>
+                    <div>
+                        <span>{transaction.category}</span>
+                        <span>
+                            {new Intl.DateTimeFormat('ot-br').format(
+                                new Date(transaction.createdAt)
+                            )}
+                        </span>
+                    </div>
+                </ResponsiveTable>
+            ))}
         </Container>
     )
 }

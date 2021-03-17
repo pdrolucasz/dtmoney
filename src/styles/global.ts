@@ -23,9 +23,21 @@ export const GlobalStyle = createGlobalStyle`
         @media (max-width: 1080px) {
             font-size: 93.75%;
         }
-
+        
         @media (max-width: 720px) {
             font-size: 87.5%;
+        }
+
+        @media (max-width: 540px) {
+            font-size: 81.25%;
+
+            .react-modal-overlay {
+                align-items: flex-end;
+            }
+
+            .react-modal-content {
+                padding: 0.5rem 3rem;
+            }
         }
     }
 
